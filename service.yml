@@ -1,0 +1,174 @@
+name: php
+type: service
+icon: php
+title: PHP
+hostname: php
+scalable: true
+labels:
+- php
+- php-fpm
+options:
+- version: '8.1'
+  default: true
+  eol: '2024-11-25T00:00:00+00:00'
+- version: '8.0'
+  eol: '2023-11-26T00:00:00+00:00'
+- version: '7.4'
+  eol: '2022-11-28T00:00:00+00:00'
+containers:
+- name: php
+  image: wodby/php
+  main: true
+  resources:
+    request:
+      memory: 16
+  env:
+  - name: PHP_FPM_ENV_VARS
+    value: '["WODBY_APP_NAME","WODBY_APP_INSTANCE_NAME","WODBY_ENVIRONMENT_NAME","WODBY_ENVIRONMENT_TYPE","WODBY_BUILD_NUMBER"]'
+  - name: PHP_ERROR_REPORTING
+    value: 'E_ALL & ~E_DEPRECATED & ~E_STRICT'
+    envType: prod
+  - name: PHP_DISPLAY_ERRORS
+    value: 'Off'
+    envType: prod
+  - name: PHP_DISPLAY_STARTUP_ERRORS
+    value: 'Off'
+    envType: prod
+  - name: PHP_TRACK_ERRORS
+    value: 'Off'
+    envType: prod
+  ports:
+  - name: fpm
+    number: 9000
+    main: true
+    type: tcp
+
+build:
+  dockerfile: Dockerfile
+  connect: true
+
+derivatives:
+- name: php-sshd
+  icon: ssh
+  title: SSHD
+  args: ['sudo', '/usr/sbin/sshd', '-De']
+  type: ssh
+  default: true
+  required: false
+  ports:
+  - name: sshd
+    main: true
+    number: 80
+    type: tcp
+  - name: fpm
+    number: 9000
+    type: tcp
+  resources:
+    request:
+      memory: 16
+    limit:
+      memory: 512
+  env:
+  - name: SSHD_GATEWAY_PORTS
+    value: clientspecified
+
+links:
+- name: db
+  title: DBMS
+  required: true
+  env:
+  - name: DB_HOST
+    value: '{{link.database.host}}'
+  - name: DB_PORT
+    value: '{{link.database.port}}'
+  - name: DB_USER
+    value: '{{link.database.user.name}}'
+  - name: DB_NAME
+    value: '{{link.database.db.name}}'
+  - name: DB_PASSWORD
+    value: '{{link.database.user.password}}'
+    secret: true
+  - name: DB_DRIVER
+    value: '{{link.database.driver}}'
+  selectors:
+  - type: db
+    labels:
+    - mariadb
+  - type: db
+    labels:
+    - mysql
+  - type: db
+    labels:
+    - postgres
+- name: redis
+  title: Redis
+  env:
+  - name: REDIS_PORT
+    value: '{{link.port}}'
+  - name: REDIS_HOST
+    value: '{{link.host}}'
+  - name: REDIS_PASSWORD
+    value: '{{link.tokens.password}}'
+    secret: true
+  selectors:
+  - type: db
+    labels:
+    - redis
+- name: blackfire
+  title: Blackfire
+  selectors:
+  - type: monitoring
+    labels:
+    - blackfire
+  env:
+  - name: PHP_BLACKFIRE
+    value: '1'
+  - name: PHP_BLACKFIRE_AGENT_HOST
+    value: '{{link.host}}'
+  - name: PHP_BLACKFIRE_AGENT_PORT
+    value: '8707'
+
+volumes:
+- name: files
+  title: Files
+  shared: true
+  path: /mnt/files
+  size: 10
+
+integrations:
+- name: variable
+  title: Variable
+  type: variable
+  required: false
+  multiple: true
+  providers:
+  - name: newrelic
+    env:
+    - name: PHP_NEWRELIC_LICENSE
+      value: '{{integration.variables.NEWRELIC_LICENSE}}'
+      secret: true
+    - name: PHP_NEWRELIC_APPNAME
+      value: '{{wodby_app_name}}'
+
+imports:
+- name: files
+  title: Files import
+  args:
+  - make
+  - files-import
+  - 'source="{{wodby_import_url}}"'
+  extensions:
+  - tar
+  - tar.gz
+  - tgz
+  - zip
+
+backups:
+- name: files
+  title: Files backup
+  upload:
+    dir: /mnt/files
+    gzip: false
+  integrations:
+  - backup-destination
+
