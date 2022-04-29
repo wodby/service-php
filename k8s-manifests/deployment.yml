@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: php
+  name: php
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: php
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: php
+    spec:
+      containers:
+      - image: wodby/php
+        imagePullPolicy: Always
+        name: php
+        ports:
+        - containerPort: 9000
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - make
+            - check-ready
+            - -f
+            - /usr/local/bin/actions.mk
+          failureThreshold: 2
+          initialDelaySeconds: 5
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 3
+        livenessProbe:
+          exec:
+            command:
+            - make
+            - check-ready
+            - -f
+            - /usr/local/bin/actions.mk
+          failureThreshold: 2
+          initialDelaySeconds: 5
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 3        
+        resources:
+          requests:
+            memory: 32Mi
+        securityContext:
+          capabilities:
+            add:
+            - SYS_PTRACE
+      terminationGracePeriodSeconds: 30
