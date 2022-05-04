@@ -48,7 +48,7 @@ build:
   connect: true
 
 derivatives:
-- name: sshd
+- name: php-sshd
   icon: ssh
   title: SSHD
   args: ['sudo', '/usr/sbin/sshd', '-De']
