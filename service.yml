@@ -150,6 +150,13 @@ integrations:
     - name: PHP_NEWRELIC_APPNAME
       value: '{{wodby_app_name}}'
 
+settings:
+- name: docroot
+  title: Root subdirectory
+  description: If your docroot does not match repository root
+  placeholder: path/relative/to/git/root
+  var: DOCROOT_SUBDIR
+
 imports:
 - name: files
   title: Files import
