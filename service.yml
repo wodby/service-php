@@ -115,7 +115,7 @@ links:
     value: '{{link.tokens.password}}'
     secret: true
   selectors:
-  - type: db
+  - type: datastore
     labels:
     - redis
 - name: blackfire
