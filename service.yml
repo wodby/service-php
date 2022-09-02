@@ -89,9 +89,7 @@ links:
     value: '{{link.database.user.password}}'
     secret: true
   - name: DB_DRIVER
-    value: '{{link.database.driver}}'
-  - name: DB_CONNECTION
-    value: '{{link.database.driver}}'    
+    value: '{{link.database.driver}}'  
   selectors:
   - type: db
     labels:
