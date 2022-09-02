@@ -81,7 +81,7 @@ links:
     value: '{{link.database.host}}'
   - name: DB_PORT
     value: '{{link.database.port}}'
-  - name: DB_USER
+  - name: DB_USERNAME
     value: '{{link.database.user.name}}'
   - name: DB_NAME
     value: '{{link.database.db.name}}'
