@@ -85,11 +85,15 @@ links:
     value: '{{link.database.user.name}}'
   - name: DB_NAME
     value: '{{link.database.db.name}}'
+  - name: DB_DATABASE
+    value: '{{link.database.db.name}}'    
   - name: DB_PASSWORD
     value: '{{link.database.user.password}}'
     secret: true
   - name: DB_DRIVER
     value: '{{link.database.driver}}'  
+  - name: DB_CONNECTION
+    value: '{{link.database.driver}}'      
   selectors:
   - type: db
     labels:
