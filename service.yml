@@ -19,10 +19,10 @@ containers:
 - name: php
   image: wodby/php
   main: true
-  resources:
-    request:
-      memory: 128
-      cpu: 100
+#  resources:
+#    request:
+#       memory: 128
+#       cpu: 100
   env:
   - name: PHP_FPM_CLEAR_ENV
     value: 'no'
