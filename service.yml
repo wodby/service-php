@@ -21,7 +21,8 @@ containers:
   main: true
   resources:
     request:
-      memory: 16
+      memory: 128
+      cpu: 100
   env:
   - name: PHP_FPM_CLEAR_ENV
     value: 'no'
