@@ -133,13 +133,6 @@ links:
   - name: PHP_BLACKFIRE_AGENT_PORT
     value: '8707'
 
-volumes:
-- name: files
-  title: Files
-  shared: true
-  path: /mnt/files
-  size: 10
-
 integrations:
 - name: variable
   title: Variable
