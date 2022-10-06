@@ -64,11 +64,11 @@ derivatives:
   - name: fpm
     number: 9000
     type: tcp
-  resources:
-    request:
-      memory: 16
-    limit:
-      memory: 512
+#   resources:
+#     request:
+#       memory: 16
+#     limit:
+#       memory: 512
   env:
   - name: SSHD_GATEWAY_PORTS
     value: clientspecified
