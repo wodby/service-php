@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: php
-  name: php
+    name: '{{.Name}}'
+  name: '{{.Name}}'
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
   template:
     metadata:
       labels:
-        name: php
+        name: '{{.Name}}'
     spec:
       containers:
       - image: wodby/php
