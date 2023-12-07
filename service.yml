@@ -135,19 +135,6 @@ integrations:
     - name: PHP_NEWRELIC_APPNAME
       value: '{{wodby_app_name}}'
 
-imports:
-- name: files
-  title: Files import
-  args:
-  - make
-  - files-import
-  - 'source="{{wodby_import_url}}"'
-  extensions:
-  - tar
-  - tar.gz
-  - tgz
-  - zip
-
 backups:
 - name: files
   title: Files backup
