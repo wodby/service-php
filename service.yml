@@ -135,12 +135,4 @@ integrations:
     - name: PHP_NEWRELIC_APPNAME
       value: '{{wodby_app_name}}'
 
-backups:
-- name: files
-  title: Files backup
-  upload:
-    dir: /mnt/files
-    gzip: false
-  integrations:
-  - backup-destination
 
