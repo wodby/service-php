@@ -8,8 +8,10 @@ labels:
 - php
 - php-fpm
 options:
-- version: '8.2'
+- version: '8.3'
   default: true
+  eol: '2026-11-23T00:00:00+00:00'
+- version: '8.2'  
   eol: '2025-12-08T00:00:00+00:00'
 - version: '8.1'
   eol: '2024-11-25T00:00:00+00:00'
