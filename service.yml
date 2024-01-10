@@ -26,8 +26,6 @@ containers:
 #       memory: 128
 #       cpu: 100
   env:
-  - name: PHP_FPM_CLEAR_ENV
-    value: 'no'  
   - name: PHP_ERROR_REPORTING
     value: 'E_ALL & ~E_DEPRECATED & ~E_STRICT'
     envType: prod
