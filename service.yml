@@ -15,8 +15,6 @@ options:
   eol: '2025-12-08T00:00:00+00:00'
 - version: '8.1'
   eol: '2024-11-25T00:00:00+00:00'
-- version: '8.0'
-  eol: '2023-11-26T00:00:00+00:00'  
 containers:
 - name: php
   image: wodby/php
@@ -61,16 +59,8 @@ derivatives:
   ports:
   - name: sshd
     main: true
-    number: 80
+    number: 22
     type: tcp
-  - name: fpm
-    number: 9000
-    type: tcp
-#   resources:
-#     request:
-#       memory: 16
-#     limit:
-#       memory: 512
   env:
   - name: SSHD_GATEWAY_PORTS
     value: clientspecified
@@ -137,4 +127,15 @@ integrations:
     - name: PHP_NEWRELIC_APPNAME
       value: '{{wodby_app_name}}'
 
-
+helm:
+  name: wodby
+  source: oci://registry-1.docker.io/wodby/php-fpm
+  chart: oci://registry-1.docker.io/wodby/php-fpm
+  version: 0.1.0
+  configurations:
+  - name: php
+    labels: podLabels
+    annotations: podAnnotations
+    env: podOptions.envVars
+    service: '{{service.name}}'
+    resources: podOptions.resources
