@@ -137,5 +137,4 @@ helm:
     labels: podLabels
     annotations: podAnnotations
     env: podOptions.envVars
-    service: '{{service.name}}'
     resources: podOptions.resources
