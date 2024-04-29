@@ -138,3 +138,5 @@ helm:
     annotations: podAnnotations
     env: podOptions.envVars
     resources: podOptions.resources
+    volumes: volumes
+    mounts: volumeMounts
