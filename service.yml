@@ -64,6 +64,10 @@ derivatives:
   env:
   - name: SSHD_GATEWAY_PORTS
     value: clientspecified
+  helm:
+    values:
+    - name: readinessProbe
+      value: "{}"
 
 links:
 - name: db
