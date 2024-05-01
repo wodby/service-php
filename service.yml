@@ -68,6 +68,10 @@ derivatives:
     values:
     - name: readinessProbe
       value: "{}"
+    - name: containerPorts.fpm
+      value: false
+    - name: containerPorts.sshd
+      value: true
 
 links:
 - name: db
