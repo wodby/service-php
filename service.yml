@@ -130,7 +130,7 @@ helm:
   - name: php
     labels: podLabels
     annotations: podAnnotations
-    env: podOptions.envVars
-    resources: podOptions.resources
+    env: envVars
+    resources: resources
     volumes: volumes
     mounts: volumeMounts
