@@ -38,6 +38,9 @@ containers:
   - name: PHP_TRACK_ERRORS
     value: 'Off'
     envType: prod
+
+routes:
+- name: fpm
   ports:
   - name: fpm
     number: 9000
