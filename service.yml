@@ -39,7 +39,7 @@ containers:
     value: 'Off'
     envType: prod
 
-routes:
+endpoints:
 - name: fpm
   ports:
   - name: fpm
@@ -59,7 +59,7 @@ derivatives:
   type: ssh
   default: true
   required: false
-  routes:
+  endpoints:
   - name: sshd
     ports:
     - name: sshd
