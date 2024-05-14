@@ -56,11 +56,13 @@ derivatives:
   type: ssh
   default: true
   required: false
-  ports:
+  routes:
   - name: sshd
-    main: true
-    number: 22
-    type: tcp
+    ports:
+    - name: sshd
+      main: true
+      number: 22
+      type: tcp
   env:
   - name: SSHD_GATEWAY_PORTS
     value: clientspecified
