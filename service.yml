@@ -118,7 +118,8 @@ links:
     value: '{{link.host}}:{{link.port}}'
   selectors:
   - type: service
-    labels: smtpd
+    labels: 
+    - smtpd
 
 integrations:
 - name: variable
