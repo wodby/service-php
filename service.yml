@@ -110,6 +110,15 @@ links:
   - type: db
     labels:
     - postgres
+- name: sendmail    
+  title: Mail Transfer Agent
+  required: false
+  env:
+  - name: SSMTP_MAILHUB
+    value: '{{link.host}}:{{link.port}}'
+  selectors:
+  - type: service
+    labels: smtpd
 
 integrations:
 - name: variable
