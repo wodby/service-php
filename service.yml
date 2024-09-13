@@ -114,8 +114,10 @@ links:
   title: Mail Transfer Agent
   required: false
   env:
-  - name: SSMTP_MAILHUB
-    value: '{{link.host}}:{{link.port}}'
+  - name: MSMTP_HOST
+    value: '{{link.host}}'
+  - name: MSMTP_PORT
+    value: '{{link.port}}'
   selectors:
   - type: service
     labels: 
