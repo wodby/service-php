@@ -71,12 +71,8 @@ derivatives:
     value: clientspecified
   helm:
     values:
-    - name: readinessProbe
-      value: "{}"
-    - name: containerPorts.fpm
-      value: false
-    - name: containerPorts.sshd
-      value: true
+    - name: containerPorts
+      value: "{sshd: 22}"
 
 links:
 - name: db
