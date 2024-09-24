@@ -72,9 +72,7 @@ derivatives:
   helm:
     values:
     - name: containerPorts
-      value: 
-        sshd: 22
-
+      value: {sshd: 22}
 links:
 - name: db
   title: DBMS
