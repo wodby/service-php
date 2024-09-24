@@ -152,3 +152,4 @@ helm:
     resources: resources
     volumes: volumes
     mounts: volumeMounts
+    sidecars: sidecars
