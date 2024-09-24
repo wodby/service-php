@@ -72,9 +72,9 @@ derivatives:
   helm:
     values:
     - name: livenessProbe
-      value: "{}"
+      value: ""
     - name: readinessProbe
-      value: "{}"
+      value: ""
     - name: containerPort.name
       value: sshd
     - name: containerPort.number
