@@ -52,6 +52,12 @@ endpoints:
 build:
   dockerfile: Dockerfile
   connect: true
+  templates:
+  - name: composer
+    title: Composer boilerplate 
+    repo: https://github.com/wodby/php-package-boilerplate
+    branch: master 
+    pipeline: pipeline.yml
 
 derivatives:
 - name: php-sshd
