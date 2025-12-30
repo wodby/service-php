@@ -49,7 +49,7 @@ endpoints:
   - name: fpm
     number: 9000
     main: true
-    type: tcp
+    protocol: tcp
 
 build:
   dockerfile: Dockerfile
@@ -74,7 +74,7 @@ derivatives:
     - name: sshd
       main: true
       number: 22
-      type: tcp
+      protocol: tcp
   env:
   - name: SSHD_GATEWAY_PORTS
     value: clientspecified
