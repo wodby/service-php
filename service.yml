@@ -2,7 +2,6 @@ name: php
 type: service
 icon: php
 title: PHP
-hostname: php
 scalable: true
 labels:
 - php
