@@ -128,10 +128,16 @@ helm:
   source: oci://registry-1.docker.io/wodby/php-fpm
   chart: oci://registry-1.docker.io/wodby/php-fpm
   version: 0.2.0
+
 workloads:
 - id: main
   kind: deployment
   primary: true
+  helm:
+    labels: podLabels
+    annotations: podAnnotations
+    volumes: extraVolumes
+    sidecars: sidecars
   containers:
   - name: php
     image: wodby/php
@@ -150,13 +156,7 @@ workloads:
     - name: PHP_TRACK_ERRORS
       value: 'Off'
       envType: prod
-
     helm:
       resources: resources
       env: envVars
       mounts: extraVolumeMounts
-  helm:
-    labels: podLabels
-    annotations: podAnnotations
-    volumes: extraVolumes
-    sidecars: sidecars
