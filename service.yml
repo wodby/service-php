@@ -141,6 +141,7 @@ workloads:
   containers:
   - name: php
     image: wodby/php
+    build: true
     env:
     - name: PHP_FPM_CLEAR_ENV
       value: 'no'
