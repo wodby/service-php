@@ -34,7 +34,7 @@ endpoints:
 build:
   dockerfile: Dockerfile
   connect: true
-  templates:
+  boilerplates:
   - name: composer
     title: Composer boilerplate
     repo: https://github.com/wodby/php-package-boilerplate

@@ -9,10 +9,10 @@ configuration for PHP.
 - [Wodby service documentation](https://wodby.com/docs/2.0/services/)
 - [Service manifest reference](https://wodby.com/docs/2.0/services/template/)
 
-## Start with a template
+## Start with a boilerplate
 
-Use one of the source templates exposed by this service to start with
-compatible build configuration and Wodby CI:
+Use one of the boilerplates exposed by this service to start with compatible
+build configuration and Wodby CI:
 
 - [Composer boilerplate](https://github.com/wodby/php-package-boilerplate)
 
@@ -27,13 +27,13 @@ compatible build configuration and Wodby CI:
 | Service name | `php` |
 | Type | Application service |
 | Versions | `8.5` by default; also available: `8.4`, `8.3`, `8.2`, `8.1` |
-| Workloads | `main` (Deployment), primary; scalable |
+| Workloads | `main` (Deployment, primary) |
 | Containers | `php` using `wodby/php`, build target |
 | Endpoints | `fpm`: TCP 9000 (main) |
-| Service links | DBMS (`db`), optional, Mail Transfer Agent (`sendmail`), optional |
-| Application build | Git source connection enabled; Dockerfile: `Dockerfile`; starters: Composer boilerplate |
+| Service links | DBMS (`db`), optional; Mail Transfer Agent (`sendmail`), optional |
+| Application build | Git source connection enabled; Dockerfile: `Dockerfile`; boilerplates: [Composer boilerplate](https://github.com/wodby/php-package-boilerplate) |
 | Helm | chart `oci://registry-1.docker.io/wodby/php-fpm`; version `0.2.0` |
-| Configuration | 1 integration slots |
+| Configuration and operations | 1 integration slots |
 
 ## Use this service
 
