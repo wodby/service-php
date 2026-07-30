@@ -132,7 +132,7 @@ helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/php-fpm
   chart: oci://registry-1.docker.io/wodby/php-fpm
-  version: 0.2.0
+  version: 0.2.1
   valueMappings:
     serviceAccountName: serviceAccount.name
     serviceAccountCreate: serviceAccount.create
