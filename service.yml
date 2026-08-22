@@ -40,34 +40,6 @@ build:
     repo: https://github.com/wodby/php-package-boilerplate
     branch: master
 
-derivatives:
-- name: php-sshd
-  icon: ssh
-  title: SSHD
-  args: ['sudo', '/usr/sbin/sshd', '-De']
-  type: ssh
-  default: true
-  required: false
-  endpoints:
-  - name: sshd
-    ports:
-    - name: sshd
-      main: true
-      number: 22
-      protocol: tcp
-  env:
-  - name: SSHD_GATEWAY_PORTS
-    value: clientspecified
-  helm:
-    values:
-    - name: livenessProbe
-      value: ""
-    - name: readinessProbe
-      value: ""
-    - name: containerPort.name
-      value: sshd
-    - name: containerPort.number
-      value: 22
 links:
 - name: db
   title: DBMS
