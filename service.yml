@@ -100,6 +100,14 @@ integrations:
     - name: PHP_NEWRELIC_APPNAME
       value: '{{wodby_app_name}}'
 
+deployment:
+  strategy: rolling
+  maxUnavailable: 0
+  maxSurge: 1
+  minReady: 10s
+  progressDeadline: 15m
+  shutdownGracePeriod: 30s
+
 helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/php-fpm
