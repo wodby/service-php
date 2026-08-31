@@ -32,7 +32,7 @@ build configuration and Wodby CI:
 | Endpoints | `fpm`: TCP 9000 (main) |
 | Service links | DBMS (`db`), optional; Mail Transfer Agent (`sendmail`), optional |
 | Application build | Git source connection enabled; Dockerfile: `Dockerfile`; boilerplates: [Composer boilerplate](https://github.com/wodby/php-package-boilerplate) |
-| Helm | chart `oci://registry-1.docker.io/wodby/php-fpm`; version `0.2.1` |
+| Helm | chart `oci://registry-1.docker.io/wodby/php-fpm`; version `0.3.1` |
 | Configuration and operations | 1 integration slots |
 
 ## Use this service
