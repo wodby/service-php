@@ -10,19 +10,16 @@ options:
 - version: '8.5'
   default: true
   eol: '2029-12-31T00:00:00+00:00'
-  tag: 8.5-4.71.5
+  tag: 8.5-r0
 - version: '8.4'
   eol: '2028-12-31T00:00:00+00:00'
-  tag: 8.4-4.71.5
+  tag: 8.4-r0
 - version: '8.3'
   eol: '2027-12-31T00:00:00+00:00'
-  tag: 8.3-4.71.5
+  tag: 8.3-r0
 - version: '8.2'
   eol: '2026-12-31T00:00:00+00:00'
-  tag: 8.2-4.71.5
-- version: '8.1'
-  eol: '2025-12-31T00:00:00+00:00'
-  tag: 8.1-4.66.6
+  tag: 8.2-r0
 endpoints:
 - name: fpm
   ports:
@@ -112,7 +109,7 @@ helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/php-fpm
   chart: oci://registry-1.docker.io/wodby/php-fpm
-  version: 0.3.2
+  version: 0.3.3
   valueMappings:
     serviceAccountName: serviceAccount.name
     serviceAccountCreate: serviceAccount.create
