@@ -26,13 +26,13 @@ build configuration and Wodby CI:
 | --- | --- |
 | Service name | `php` |
 | Type | Application service |
-| Versions | `8.5` by default; also available: `8.4`, `8.3`, `8.2`, `8.1` |
+| Versions | `8.5` by default; also available: `8.4`, `8.3`, `8.2` |
 | Workloads | `main` (Deployment, primary) |
 | Containers | `php` using `wodby/php`, build target |
 | Endpoints | `fpm`: TCP 9000 (main) |
 | Service links | DBMS (`db`), optional; Mail Transfer Agent (`sendmail`), optional |
 | Application build | Git source connection enabled; Dockerfile: `Dockerfile`; boilerplates: [Composer boilerplate](https://github.com/wodby/php-package-boilerplate) |
-| Helm | chart `oci://registry-1.docker.io/wodby/php-fpm`; version `0.3.2` |
+| Helm | chart `oci://registry-1.docker.io/wodby/php-fpm`; version `0.3.3` |
 | Configuration and operations | 1 integration slots |
 
 ## Use this service
