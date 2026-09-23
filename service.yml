@@ -166,17 +166,7 @@ workspace:
     uid: 1000
     gid: 1000
     port: 2222
-    command:
-    - /bin/sh
-    - -eu
-    - -c
-    - |
-      mkdir -p "$HOME/.ssh"
-      chmod 700 "$HOME/.ssh"
-      env > "$HOME/.ssh/environment"
-      chmod 600 "$HOME/.ssh/environment"
-      exec sudo /usr/sbin/sshd -D -e -f /dev/null -o PermitUserEnvironment=yes "$@"
-    - workspace-sshd
+    command: [sudo, /usr/sbin/sshd, -D, -e, -f, /dev/null]
   mounts:
   - name: code
     workload: main
