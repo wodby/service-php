@@ -152,6 +152,7 @@ workloads:
 
 # Development workspaces use the runtime image's PHP, Composer, Git and SSH tools.
 workspace:
+  configuration: [/docker-entrypoint.sh, --configure-runtime]
   runner:
     workload: main
     container: php
