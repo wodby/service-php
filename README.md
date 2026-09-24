@@ -62,3 +62,18 @@ wodby service validate-manifest service.yml --org <org-id>
 ```
 
 See the [service manifest reference](https://wodby.com/docs/2.0/services/template/) and the [managed services index](https://github.com/wodby/services).
+
+## Development workspaces
+
+On Wodby installations with development workspaces enabled, this service can run
+against a persistent Git checkout at `/var/www/html`. Its personal SSH runner uses
+the selected PHP runtime, Git and Composer, with a separate persistent home at
+`/home/wodby`. Preparation runs `composer install` when `composer.json` exists.
+
+Connect a repository when creating the workspace and select shared RWX storage.
+Use your Wodby account's SSH public key to connect. Git push credentials and agent
+authentication are configured separately inside your private workspace home.
+Changes affect the development environment; commit and push them before building
+and deploying a Standard environment. Restarting or resuming does not pull Git or
+replace your checkout. Applications requiring additional operating-system packages
+must provide a compatible runtime image.

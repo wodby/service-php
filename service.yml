@@ -10,16 +10,20 @@ options:
 - version: '8.5'
   default: true
   eol: '2029-12-31T00:00:00+00:00'
-  tag: 8.5-r1
+  tag: 8.5-r4
+  devTag: 8.5-dev-r4
 - version: '8.4'
   eol: '2028-12-31T00:00:00+00:00'
-  tag: 8.4-r1
+  tag: 8.4-r4
+  devTag: 8.4-dev-r4
 - version: '8.3'
   eol: '2027-12-31T00:00:00+00:00'
-  tag: 8.3-r1
+  tag: 8.3-r4
+  devTag: 8.3-dev-r4
 - version: '8.2'
   eol: '2026-12-31T00:00:00+00:00'
-  tag: 8.2-r1
+  tag: 8.2-r4
+  devTag: 8.2-dev-r4
 endpoints:
 - name: fpm
   ports:
@@ -149,3 +153,27 @@ workloads:
       resources: resources
       env: envVars
       mounts: extraVolumeMounts
+
+# Development workspaces use the runtime image's PHP, Composer, Git and SSH tools.
+workspace:
+  configuration: [/docker-entrypoint.sh, --configure-runtime]
+  runner:
+    workload: main
+    container: php
+    workingDirectory: /var/www/html
+    homeDirectory: /home/wodby
+    username: wodby
+    uid: 1000
+    gid: 1000
+    port: 2222
+    command: [sudo, /usr/sbin/sshd, -D, -e, -f, /dev/null]
+  mounts:
+  - name: code
+    workload: main
+    container: php
+    path: /var/www/html
+  preparation:
+  - name: dependencies
+    command: [/bin/sh, -eu, -c, 'if [ -f composer.json ]; then composer install --no-interaction --prefer-dist; fi']
+    timeoutSeconds: 1800
+  reload: immediate
