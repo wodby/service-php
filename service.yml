@@ -176,4 +176,6 @@ workspace:
   - name: dependencies
     command: [/bin/sh, -eu, -c, 'if [ -f composer.json ]; then composer install --no-interaction --prefer-dist; fi']
     timeoutSeconds: 1800
+  # Keeps Composer dependencies out of Git status.
+  ignore: ['/vendor/']
   reload: immediate
