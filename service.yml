@@ -99,7 +99,7 @@ integrations:
       value: '{{integration.variables.NEWRELIC_LICENSE}}'
       secret: true
     - name: PHP_NEWRELIC_APPNAME
-      value: '{{wodby_app_name}}'
+      value: '{{app.name}}'
 
 deployment:
   strategy: rolling
