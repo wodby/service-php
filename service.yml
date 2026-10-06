@@ -3,6 +3,7 @@ type: service
 icon: php
 title: PHP
 scalable: true
+guidance: GUIDANCE.md
 labels:
 - php
 - php-fpm
