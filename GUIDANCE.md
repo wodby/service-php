@@ -17,7 +17,7 @@ A variable is present only while its link exists and the linked service is enabl
 
 ## Generated configuration
 
-On every start the container writes `$CONF_DIR/wodby.settings.php` (normally `/var/www/conf/wodby.settings.php`), a `$wodby` array with the environment's hosts and files directory. Framework services built on this one extend it and include it for the application. It is outside the codebase and rewritten on start: never edit it or copy its values into the repository. In a plain PHP application, read the variables above.
+On every start the container writes `$CONF_DIR/wodby.settings.php` (normally `/var/www/conf/wodby.settings.php`), a `$wodby` array with the environment's hosts, the files directory and the linked database's connection details. Framework services built on this one extend it and include it for the application. It is outside the codebase and rewritten on start: never edit it or copy its values into the repository. In a plain PHP application, read the variables above.
 
 ## PHP settings
 
@@ -31,5 +31,6 @@ PHP and PHP-FPM are configured through environment variables on the service, suc
 ## In a development workspace
 
 - The code is served from the checkout as it is on disk. PHP checks files for changes on every request, so an edit needs no restart.
+- PHP-FPM handles requests as `wodby`, the user that owns the checkout, so it reads what the developer can read and the files it writes stay editable over SSH.
 - Dependencies are installed by workspace setup with `composer install`; `/vendor/` is kept out of Git status.
 - A change to variables or linked services still needs a deployment of the environment.
