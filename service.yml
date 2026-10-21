@@ -46,6 +46,10 @@ links:
 - name: db
   title: DBMS
   required: false
+  # A managed database server's CA certificate, mounted when the server has one, so the app can verify it over TLS.
+  database:
+    ca:
+      filepath: /etc/wodby/db/ca.pem
   env:
   - name: DB_HOST
     value: '{{link.database.host}}'
@@ -64,6 +68,9 @@ links:
     value: '{{link.database.driver}}'
   - name: DB_CONNECTION
     value: '{{link.database.driver}}'
+  # The path of the server's CA certificate when it has one, otherwise empty: connect with TLS only when it is set.
+  - name: DB_SSL_CA
+    value: '{{link.database.caFile}}'
   selectors:
   - type: db
     labels:
