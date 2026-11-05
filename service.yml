@@ -141,6 +141,10 @@ workloads:
   containers:
   - name: php
     image: wodby/php
+    resources:
+      request:
+        cpu: 20
+        memory: 80
     build: true
     env:
     - name: PHP_FPM_CLEAR_ENV
