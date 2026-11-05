@@ -10,10 +10,13 @@ Links to other services reach the application as environment variables. Read the
 | --- | --- |
 | Database (MariaDB, MySQL or PostgreSQL) | `DB_HOST`, `DB_PORT`, `DB_NAME` (also `DB_DATABASE`), `DB_USERNAME`, `DB_PASSWORD`, `DB_DRIVER` (also `DB_CONNECTION`) |
 | Mail | `MSMTP_HOST`, `MSMTP_PORT` |
+| OpenTelemetry Collector | `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_PROTOCOL` (`http/protobuf`), `OTEL_EXPORTER_OTLP_HEADERS` (the Collector's ingest token), `OTEL_PHP_AUTOLOAD_ENABLED` (`true`) |
 
 Mail needs no code: PHP's `mail()` is delivered through the linked mail service. An SMTP library or credentials in the codebase are not required.
 
 A variable is present only while its link exists and the linked service is enabled.
+
+The `opentelemetry` extension is enabled in the image. To send traces, add the OpenTelemetry PHP SDK, the OTLP exporter and an HTTP client with Composer (`open-telemetry/sdk`, `open-telemetry/exporter-otlp` and `php-http/guzzle7-adapter`), plus auto-instrumentation packages for the framework if wanted; with the link, the SDK configures itself from the variables above. Set `OTEL_SERVICE_NAME` to name the application in traces. Without the link the SDK stays off.
 
 ## Generated configuration
 
