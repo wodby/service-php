@@ -11,20 +11,20 @@ options:
 - version: '8.5'
   default: true
   eol: '2029-12-31T00:00:00+00:00'
-  tag: 8.5-r12
-  devTag: 8.5-dev-r12
+  tag: 8.5-r13
+  devTag: 8.5-dev-r13
 - version: '8.4'
   eol: '2028-12-31T00:00:00+00:00'
-  tag: 8.4-r12
-  devTag: 8.4-dev-r12
+  tag: 8.4-r13
+  devTag: 8.4-dev-r13
 - version: '8.3'
   eol: '2027-12-31T00:00:00+00:00'
-  tag: 8.3-r12
-  devTag: 8.3-dev-r12
+  tag: 8.3-r13
+  devTag: 8.3-dev-r13
 - version: '8.2'
   eol: '2026-12-31T00:00:00+00:00'
-  tag: 8.2-r12
-  devTag: 8.2-dev-r12
+  tag: 8.2-r13
+  devTag: 8.2-dev-r13
 endpoints:
 - name: fpm
   ports:
