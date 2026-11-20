@@ -12,19 +12,27 @@ options:
   default: true
   eol: '2029-12-31T00:00:00+00:00'
   tag: 8.5-r18
+  digest: sha256:c8b4144b1604883157d6bdc46f6bf6ddd2ca27931b8f34c5a5b0e5999b793442
   devTag: 8.5-dev-r18
+  devDigest: sha256:99fe0a7cd7774280765989ced3e46c31a24f6c9aa1ab04cce215784cf5205c40
 - version: '8.4'
   eol: '2028-12-31T00:00:00+00:00'
   tag: 8.4-r18
+  digest: sha256:5b8f547b06c19db0c0e34fa3b6550187698c79ab068acbf1e174c4887d0b921e
   devTag: 8.4-dev-r18
+  devDigest: sha256:2352bd6fa71dc8e38c1825b71f0cfc1f2c246898d8cd3f531dd998d9ebc7b21b
 - version: '8.3'
   eol: '2027-12-31T00:00:00+00:00'
   tag: 8.3-r18
+  digest: sha256:c335249701a0d4cf3d441fa654a30e4475f5996462299bc12df92b7681add6f6
   devTag: 8.3-dev-r18
+  devDigest: sha256:411ba59e094e2e4dcc194b7f1ebe739879f1373dc97ecc1ea93585a672604f27
 - version: '8.2'
   eol: '2026-12-31T00:00:00+00:00'
   tag: 8.2-r18
+  digest: sha256:573cd79ff25e7b87945dd9be575271a4e26e0fbd74f0bbef5b4715d6a2086a81
   devTag: 8.2-dev-r18
+  devDigest: sha256:fe78b26d13ff8d1e78d270c1a527ae8738e9e145873afde11dfb85a7b174eaa5
 endpoints:
 - name: fpm
   ports:
@@ -205,8 +213,7 @@ workspace:
     path: /var/www/html
   preparation:
   - name: dependencies
-    command: [/bin/sh, -eu, -c, 'if [ -f composer.json ]; then composer install --no-interaction
-        --prefer-dist; fi']
+    command: [/bin/sh, -eu, -c, 'if [ -f composer.json ]; then composer install --no-interaction --prefer-dist; fi']
     timeoutSeconds: 1800
   # Keeps Composer dependencies out of Git status.
   ignore: ['/vendor/']
